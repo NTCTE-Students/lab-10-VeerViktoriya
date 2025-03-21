@@ -12,7 +12,7 @@ try {
     }
     while (($line = fgets($file)) !== false) {
         print("{$line}<br>");
-        
+    
     }
 
 } catch (FileReadException $e) {

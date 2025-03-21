@@ -1,8 +1,9 @@
 <?php 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
     try {
-     $email = $_POST['email'];
-     $password = $_POST['password'];
      if (empty($email) || empty($password)) {
         throw new Exception('Поле обязательное для заполнение');
      }
@@ -12,9 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      if (strlen($password) < 5) {
         throw new Exception('Короткий пароль');
      }
-    } catch (ValidationException $e) {
-     print $e->getMessage();
-     }
+    } catch (Exception $e) {
+     print($e->getMessage());
+    }
  } 
  
  
@@ -27,10 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      <title>Document</title>
  </head>
  <body>
-     <form  method="post" >
+     <form  method="post">
          <input placeholder="email" name="email"> <br>
          <input type="password" name="password"  placeholder="password">
-     
+        <input type="submit">
      </form>
  </body>
  </html>
